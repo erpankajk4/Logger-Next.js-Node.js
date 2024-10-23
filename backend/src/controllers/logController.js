@@ -30,14 +30,24 @@ const logController = {
     console.log(req.user, "user");
     console.log(req.query, "query");
     try {
+      // Initialize filters based on user role
       const filters = {
-        userId: req.user.id,
         role: req.user.role,
         actionType: req.query.actionType || null,
         startDate: req.query.startDate || null,
         endDate: req.query.endDate || null,
         deleted: req.query.deleted === "true",
       };
+
+      // If the user is an admin, they can see all logs
+      if (req.user.role === "admin") {
+        // No userId filter applied for admin
+        filters.userId = null;
+      } else {
+        // For regular users, restrict to their own logs
+        filters.userId = req.user.id;
+      }
+
       const logs = await logService.getLogs(filters);
       return res.status(200).json({ logs });
     } catch (error) {
@@ -46,7 +56,6 @@ const logController = {
         .json({ message: "Error retrieving logs", error: error.message });
     }
   },
-
   async deleteLog(req, res) {
     try {
       const logId = req.params.id;

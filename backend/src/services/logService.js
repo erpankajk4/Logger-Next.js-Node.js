@@ -13,12 +13,16 @@ const logService = {
 
   async getLogs(filters) {
     const query = {};
+
+    // If userId is not null (admin case), add it to the query
     if (filters.userId) {
       query.userId = filters.userId;
     }
+
     if (filters.actionType) {
       query.actionType = filters.actionType;
     }
+
     if (filters.startDate || filters.endDate) {
       query.timestamp = {};
       if (filters.startDate) {
@@ -28,13 +32,18 @@ const logService = {
         query.timestamp.$lte = new Date(filters.endDate);
       }
     }
-    if (!filters.deleted) {
-      query.deleted = { $ne: true };
+
+    // Handle the deleted status filter
+    if (filters.deleted !== undefined) {
+      query.deleted = filters.deleted ? { $ne: false } : { $ne: true };
     }
+
+    // Find logs based on the constructed query
     const logs = await Log.find(query).sort({ timestamp: -1 });
 
     return logs;
   },
+
   async softDeleteLog(logId) {
     const log = await Log.findById(logId);
     if (!log) throw new Error("Log not found");

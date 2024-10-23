@@ -6,6 +6,9 @@ This project implements a full-stack logging system with user action tracking an
 
 Deploy Link: 
 
+**Admin** 
+username: admin@gmail.com
+password: 12345678
 
 ## Features
 
