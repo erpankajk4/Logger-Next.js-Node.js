@@ -4,6 +4,9 @@ This project implements a full-stack logging system with user action tracking an
 
 **Note:** Intentionally, provided .env file
 
+Deploy Link: 
+
+
 ## Features
 
 - User authentication with JWT.
