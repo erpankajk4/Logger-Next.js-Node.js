@@ -42,3 +42,10 @@ Make sure you have the following installed:
 ```bash
 git clone https://github.com/erpankajk4/Logger-Next.js-Node.js.git
 cd fullstack-logging-system
+````
+Demo-
+![login](https://github.com/user-attachments/assets/cc1e3235-4009-4b5a-a464-e95825d4bbab)
+![register](https://github.com/user-attachments/assets/26aa9fb6-3821-428a-b73b-cd8d3d2e1eda)
+![dasboard](https://github.com/user-attachments/assets/29c499ec-5747-443a-9202-0013ebc86b6a)
+
+
