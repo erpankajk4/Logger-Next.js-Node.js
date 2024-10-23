@@ -34,5 +34,5 @@ Make sure you have the following installed:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/your-repo/fullstack-logging-system.git
+git clone https://github.com/erpankajk4/Logger-Next.js-Node.js.git
 cd fullstack-logging-system
